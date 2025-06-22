@@ -67,18 +67,18 @@ services:
     networks:
       - shared-network
 
-  search-service:
-    build:
-      context: ./search-service
-    container_name: search-service
-    depends_on:
-      - redis
-    environment:
-      - REDIS_URL=redis://redis:6379
-    ports:
-      - "3000:3000"  # <-- Habilita acceso al endpoint HTTP
-    networks:
-      - shared-network
+ # search-service:
+ #  build:
+ #     context: ./search-service
+ #   container_name: search-service
+ #   depends_on:
+ #     - redis
+ #   environment:
+ #     - REDIS_URL=redis://redis:6379
+ #  ports:
+ #     - "3000:3000"  # <-- Habilita acceso al endpoint HTTP
+ #   networks:
+ #     - shared-network
 
 networks:
   shared-network:
