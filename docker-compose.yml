@@ -13,6 +13,34 @@ services:
     networks:
       - shared-network
 
+services:
+  register-db:
+    image: postgres:15
+    container_name: register-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=SS29lose
+      - POSTGRES_DB=registerdb
+    ports:
+      - "5434:5432"
+    networks:
+      - shared-network
+
+  register-service:
+    build:
+      context: ./register-service
+    container_name: register-service
+    depends_on:
+      - register-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://register-db:5432/registerdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=SS29lose
+    ports:
+      - "8086:8086"
+    networks:
+      - shared-network
+
   mongo:
     image: mongo:5
     container_name: mongo
