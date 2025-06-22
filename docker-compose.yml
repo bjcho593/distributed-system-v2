@@ -1,0 +1,58 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=SS29lose
+      - POSTGRES_DB=usersdb
+    networks:
+      - shared-network
+
+  mongo:
+    image: mongo:5
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - shared-network
+
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - shared-network
+
+  neo4j:
+    image: neo4j:5.14
+    container_name: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      - NEO4J_AUTH=neo4j/SS29lose
+    networks:
+      - shared-network
+
+  search-service:
+    build:
+      context: ./search-service
+    container_name: search-service
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379
+    ports:
+      - "3000:3000"  # <-- Habilita acceso al endpoint HTTP
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    driver: bridge

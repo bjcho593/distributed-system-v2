@@ -1,0 +1,74 @@
+{
+  "info": {
+    "name": "match-service (localhost:8083)",
+    "_postman_id": "match-service-completo",
+    "description": "Colecci\u00f3n Postman para el microservicio match-service con endpoints de estado, creaci\u00f3n y consulta.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /match/status",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8083/match/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "match",
+            "status"
+          ]
+        }
+      }
+    },
+    {
+      "name": "POST /match/create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"teamA\": \"Tigres\",\n  \"teamB\": \"Pumas\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8083/match/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "match",
+            "create"
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET /match/all",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8083/match/all",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8083",
+          "path": [
+            "match",
+            "all"
+          ]
+        }
+      }
+    }
+  ]
+}
