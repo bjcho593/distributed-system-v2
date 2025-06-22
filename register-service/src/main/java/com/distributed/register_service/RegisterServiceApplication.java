@@ -1,4 +1,4 @@
-package com.distributed.registerservice;
+package com.distributed.register_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
