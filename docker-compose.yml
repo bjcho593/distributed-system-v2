@@ -13,7 +13,6 @@ services:
     networks:
       - shared-network
 
-services:
   register-db:
     image: postgres:15
     container_name: register-db
