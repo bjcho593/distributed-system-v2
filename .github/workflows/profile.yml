@@ -1,0 +1,37 @@
+name: Profile Service CI
+
+on:
+  push:
+    paths:
+      - "profile-service/**"
+  pull_request:
+    paths:
+      - "profile-service/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: mongo:6
+        ports:
+          - 27017:27017
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        working-directory: ./profile-service
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run tests
+        working-directory: ./profile-service
+        run: pytest
