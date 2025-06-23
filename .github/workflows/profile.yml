@@ -1,6 +1,7 @@
 name: Profile Service CI
 
 on:
+  workflow_dispatch:         
   push:
     paths:
       - "profile-service/**"
