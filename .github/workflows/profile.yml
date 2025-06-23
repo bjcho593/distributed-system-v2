@@ -1,13 +1,17 @@
 name: Profile Service CI
 
 on:
-  workflow_dispatch:         
   push:
+    branches: [qa]
     paths:
       - "profile-service/**"
+
   pull_request:
+    branches: [main]
     paths:
       - "profile-service/**"
+
+  workflow_dispatch:
 
 jobs:
   test:
