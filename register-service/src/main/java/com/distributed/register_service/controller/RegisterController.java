@@ -20,4 +20,9 @@ public class RegisterController {
         repository.save(user);
         return "Usuario registrado exitosamente";
     }
+    @GetMapping
+    public List<User> getAllUsers() {
+        return repository.findAll();
+}
+
 }
