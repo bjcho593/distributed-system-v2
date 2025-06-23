@@ -1,0 +1,57 @@
+{
+    "info": {
+        "name": "register-service",
+        "_postman_id": "d3477d91-73e7-4c10-92be-7286edc8829e",
+        "description": "Colecci\u00f3n para probar el microservicio de registro de usuarios",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Registrar usuario",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"email\": \"demo@ejemplo.com\",\n    \"password\": \"123456\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8086/register",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8086",
+                    "path": [
+                        "register"
+                    ]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Listar usuarios",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8086/register",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "8086",
+                    "path": [
+                        "register"
+                    ]
+                }
+            },
+            "response": []
+        }
+    ]
+}
