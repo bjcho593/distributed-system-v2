@@ -1,27 +1,27 @@
 # Auth Service
 
-Microservicio encargado de la autenticación de usuarios mediante Node.js, Express y Redis.
+Microservice responsible for user authentication using Node.js, Express, and Redis.
 
-## 🚀 Tecnologías
+## 🚀 Technologies
 
 - Node.js (Express)
 - Redis
 - JWT (jsonwebtoken)
 - Docker + Docker Compose
 
-## 📦 Endpoints principales
+## 📦 Main Endpoints
 
-- `POST /auth/register` – Registro de usuarios
-- `POST /auth/login` – Inicia sesión y devuelve un JWT
-- `GET /auth/status` – Verifica si el servicio está activo
+- `POST /auth/register` – User registration
+- `POST /auth/login` – Log in and return a JWT
+- `GET /auth/status` – Check if the service is up
 
-## ⚙️ Variables de entorno
+## ⚙️ Environment Variables
 
 - `REDIS_HOST=redis`
 - `REDIS_PORT=6379`
-- `JWT_SECRET=superclave123`
+- `JWT_SECRET=superkey123`
 
-## ▶️ Cómo ejecutar
+## ▶️ How to run
 
 ```bash
 docker-compose -f docker-compose.yml -f auth-service/docker-compose.override.yml up --build -d
