@@ -27,7 +27,7 @@ services:
 
   register-service:
     build:
-      context: ./register-service
+      context: ./authentication-domain/register-service
     container_name: register-service
     depends_on:
       - register-db
@@ -49,13 +49,13 @@ services:
       - shared-network
 
   password-recovery-service:
-    build: ./password-recovery-service
+    build: ./authentication-domain/password-recovery-service
     ports:
       - "8087:8087"
     depends_on:
       - recovery-db
     env_file:
-      - ./password-recovery-service/.env
+      - ./authentication-domain/password-recovery-service/.env
     networks:
       - shared-network
 
@@ -68,13 +68,13 @@ services:
       - shared-network
 
   profile-service:
-    build: ./profile-service
+    build: ./authentication-domain/profile-service
     ports:
       - "8088:8088"
     depends_on:
       - profile-db
     env_file:
-      - ./profile-service/.env
+      - ./authentication-domain/profile-service/.env
     networks:
       - shared-network
 
@@ -105,20 +105,6 @@ services:
     networks:
       - shared-network
 
-#  search-service:
-#    build:
-#      context: ./search-service
-#    container_name: search-service
-#    depends_on:
-#      - redis
-#    environment:
-#      - REDIS_URL=redis://redis:6379
-#    ports:
-#      - "3000:3000"
-#    networks:
-#      - shared-network
-
 networks:
   shared-network:
     driver: bridge
-
