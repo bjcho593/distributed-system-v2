@@ -67,6 +67,25 @@ services:
     networks:
       - shared-network
 
+  profile-service:
+    build: ./profile-service
+    ports:
+      - "8088:8088"
+    depends_on:
+      - profile-db
+    env_file:
+      - ./profile-service/.env
+    networks:
+      - shared-network
+
+  profile-db:
+    image: mongo:6
+    container_name: profile-db
+    ports:
+      - "27019:27017"
+    networks:
+      - shared-network
+
   redis:
     image: redis:7
     container_name: redis
@@ -102,3 +121,4 @@ services:
 networks:
   shared-network:
     driver: bridge
+
